@@ -20,15 +20,15 @@
                 if (x == 3 || x == 6) { css2 = "border-right-width: 2px;"; } else { css2 = ""; }
                 <td style="@css1 @css2">
                     <input maxlength="1" type="text"
-                           class="Sfield" name="txt @i@x"
-                           @if (ViewData["puzzle"] != null){
-                           @("value=")if(((short[,])ViewData["puzzle"])[i-1,x-1] != 0){ @(((short[,])ViewData["puzzle"])[i - 1, x - 1] + " ")} 
-                           if(((short[,])ViewData["puzzle"])[i - 1, x - 1] != 0) { @("disabled")  }
-                           }>
+                           class="Sfield" name="txt @i@x" id="txt @i@x"
+                           @if (ViewData["puzzle"] != null) { @("value=") if (((short[,])ViewData["puzzle"])[i - 1, x - 1] != 0) { @(((short[,])ViewData["puzzle"])[i - 1, x - 1] + " ") } if (((short[,])ViewData["puzzle"])[i - 1, x - 1] != 0) { @("disabled")   } }>
+
                 </td>
             }
             </tr>
         }
     </table>
-    <input @if(ViewData["puzzle"] == null){@("disabled")} type="submit" value="Check" />
+    <input @if(ViewData["puzzle"] == null){@("disabled")} type="submit" value="Check" />  
+                @Html.ActionLink("Hint me pls","Index","Home",null,null)
+
 </form>
