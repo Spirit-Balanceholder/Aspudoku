@@ -3,7 +3,6 @@
 }
 
 <h2>Sudoku</h2>
-
 @Html.ActionLink("New Game", "Index", "Home", new { CreateGame = 1 }, null)
 
 <form>
@@ -30,5 +29,5 @@
             </tr>
         }
     </table>
-    <input @if(ViewData["puzzle"] == null){@("disabled")} type="submit" value="Check" />
+    <!--<input @if(ViewData["puzzle"] == null){@("disabled")} type="submit" value="Check" />-->
 </form>
