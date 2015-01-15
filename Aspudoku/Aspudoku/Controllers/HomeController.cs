@@ -10,18 +10,25 @@ namespace Aspudoku.Controllers
 {
     public class HomeController : Controller
     {
-        Sudo sudo = new Sudo();
         //
         // GET: /Home/
         public ActionResult Index(int CreateGame = 0)
         {
-            if (CreateGame == 1)
+            if (Sudo.puzzle == null || CreateGame == 1)
             {
-                sudo.Create();
-                ViewData["puzzle"] = sudo.puzzle;
+                Sudo.Create();
+                ViewData["puzzle"] = Sudo.puzzle;
+
+                if (CreateGame == 1)
+                    return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewData["puzzle"] = Sudo.puzzle;
             }
             return View();
         }
+
 
         public ActionResult Hint(short[,] puzzle)
         {
@@ -64,5 +71,12 @@ namespace Aspudoku.Controllers
         }          
 
       
+        public ActionResult Search(string name)
+        {
+            //some operations goes here
+            
+            return RedirectToAction("Index"); //return "Events" view to the user
+        }
+
     }
 }

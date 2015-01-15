@@ -6,17 +6,15 @@ using System.Web;
 
 namespace Aspudoku.Models
 {
-    public class Sudo
+    public static class Sudo
     {
-        Game gm = new Game();
-        public short[,] puzzle { get; set; }
-        public Sudo()
-        {
-            puzzle = new short[9, 9];
-        }
+        static Game gm;
+        public static short[,] puzzle { get; set; }
 
-        public void Create ()
+        public static void Create ()
         {
+            gm = new Game();
+            puzzle = new short[9, 9];
             gm.create();
             for (int x = 0; x < 9; x++)
             {
